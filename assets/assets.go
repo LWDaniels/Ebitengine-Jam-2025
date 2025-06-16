@@ -15,6 +15,9 @@ var (
 	//go:embed gopher.png
 	gopher_png []byte
 	Gopher     = newTexture(gopher_png)
+	//go:embed simple_block.png
+	block_png []byte
+	Block     = newTexture(block_png)
 )
 
 func newTexture(byteArr []byte) *ebiten.Image {

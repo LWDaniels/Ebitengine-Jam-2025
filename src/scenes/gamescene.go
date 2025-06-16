@@ -1,19 +1,21 @@
 package scenes
 
 import (
-	"github.com/LWDaniels/Ebitengine-Jam-2025/assets"
-	"github.com/LWDaniels/Ebitengine-Jam-2025/src/scenes/camera"
+	"github.com/LWDaniels/Ebitengine-Jam-2025/src/constants"
+	"github.com/LWDaniels/Ebitengine-Jam-2025/src/models/board"
+	"github.com/LWDaniels/Ebitengine-Jam-2025/src/models/camera"
 	"github.com/hajimehoshi/ebiten/v2"
 )
 
 type GameScene struct {
-	cam camera.Camera
+	cam   camera.Camera
+	board board.Board
 }
 
 func (g *GameScene) Draw(screen *ebiten.Image) {
-	op := &ebiten.DrawImageOptions{}
-	op.GeoM.Concat(g.cam.GeoM())
-	screen.DrawImage(assets.Gopher, op)
+	screen.Clear()
+	screen.Fill(constants.OffWhite)
+	g.board.Draw(screen, g.cam.GeoM())
 }
 
 func (g *GameScene) Update() error {
@@ -21,9 +23,10 @@ func (g *GameScene) Update() error {
 }
 
 func (g *GameScene) Layout(screenWidth, screenHeight int) (targetWidth, targetHeight int) {
-	return 1280, 720
+	return constants.ScreenWidth, constants.ScreenHeight
 }
 
 func NewGameScene() ebiten.Game {
-	return &GameScene{camera.NewCamera(0, 0, 1)}
+	game := &GameScene{camera.NewCamera(0, 0, 4), board.NewBoard()}
+	return game
 }
