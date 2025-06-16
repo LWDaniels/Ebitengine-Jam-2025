@@ -23,7 +23,7 @@ type Player struct {
 func (p Player) Draw(screen *ebiten.Image, camGeoM ebiten.GeoM) {
 	op := &ebiten.DrawImageOptions{}
 	op.ColorScale = p.Tint
-	op.GeoM.Translate(float64(p.Pos.X), float64(p.Pos.Y))
+	op.GeoM.Translate(float64(p.Pos.X*constants.TileSize), float64(p.Pos.Y*constants.TileSize))
 	op.GeoM.Concat(camGeoM)
 	screen.DrawImage(p.Image, op)
 }

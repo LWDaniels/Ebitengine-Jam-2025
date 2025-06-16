@@ -2,6 +2,7 @@ package scenes
 
 import (
 	"github.com/LWDaniels/Ebitengine-Jam-2025/src/constants"
+	"github.com/LWDaniels/Ebitengine-Jam-2025/src/input"
 	"github.com/LWDaniels/Ebitengine-Jam-2025/src/models/board"
 	"github.com/LWDaniels/Ebitengine-Jam-2025/src/models/camera"
 	"github.com/hajimehoshi/ebiten/v2"
@@ -19,6 +20,9 @@ func (g *GameScene) Draw(screen *ebiten.Image) {
 }
 
 func (g *GameScene) Update() error {
+	moveDir := input.Movement()
+	g.board.Player.Pos = g.board.Player.Pos.Add(moveDir)
+
 	return nil
 }
 
