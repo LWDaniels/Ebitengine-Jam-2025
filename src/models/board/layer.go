@@ -1,8 +1,8 @@
 package board
 
 import (
-	"github.com/LWDaniels/Ebitengine-Jam-2025/assets"
-	"github.com/LWDaniels/Ebitengine-Jam-2025/src/constants"
+	"image"
+
 	"github.com/LWDaniels/Ebitengine-Jam-2025/src/models/tile"
 	"github.com/hajimehoshi/ebiten/v2"
 )
@@ -29,11 +29,7 @@ func (l Layer) Draw(screen *ebiten.Image, camGeoM ebiten.GeoM) {
 				continue
 			}
 
-			op := &ebiten.DrawImageOptions{}
-			op.ColorScale.ScaleWithColor(constants.Yellow)
-			op.GeoM.Translate(float64(x*constants.TileSize), float64(y*constants.TileSize))
-			op.GeoM.Concat(camGeoM)
-			screen.DrawImage(assets.Block, op)
+			l.Tiles[y][x].Draw(screen, camGeoM, image.Pt(x, y))
 		}
 	}
 }

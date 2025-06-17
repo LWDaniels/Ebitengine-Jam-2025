@@ -4,6 +4,17 @@ package tile
 type Property = uint
 
 const (
-	Collision = iota
-	Pushable
+	Collision Property = iota
+	PushableR
+	PushableD
+	PushableL
+	PushableU
+	/*
+		Other ideas:
+		- Damage (maybe destroys tiles that move into it)
+		- Indestructible (can't be destroyed)
+		- Maybe subcategories of pushable (pushable in particular directions???)
+		- Goal (not sure if the goal is to get player there or something else)
+		- idk :)
+	*/
 )

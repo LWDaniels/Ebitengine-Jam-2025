@@ -18,6 +18,9 @@ var (
 	//go:embed simple_block.png
 	block_png []byte
 	Block     = newTexture(block_png)
+	//go:embed arrow.png
+	arrow_png []byte
+	Arrow     = newTexture(arrow_png)
 )
 
 func newTexture(byteArr []byte) *ebiten.Image {

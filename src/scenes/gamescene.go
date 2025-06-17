@@ -38,7 +38,9 @@ func NewGameScene() ebiten.Game {
 	game := &GameScene{camera.NewCamera(0, 0, 4), board.NewBoard()}
 	t := tile.NewTile()
 	t.Properties.Add(tile.Collision)
-	t.Properties.Add(tile.Pushable)
+	t.Properties.Add(tile.PushableR)
+	t.Properties.Add(tile.PushableU)
+	// t.Properties.Add(tile.PushableL)
 	game.board.Layers[0].Tiles[5][5] = t
 
 	// t2 := tile.NewTile()
