@@ -1,5 +1,10 @@
 package tile
 
 type Tile struct {
-	// not sure exactly how to organize this
+	Properties Set
+}
+
+// makes an empty tile
+func NewTile() Tile {
+	return Tile{NewSet()}
 }
